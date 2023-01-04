@@ -1,0 +1,67 @@
+@import 'variables';
+
+@mixin rem($property, $pixels) {
+    #{$property}: #{$pixels / 16}rem;
+}
+
+@mixin flex-display() {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+@mixin flex-direction($direction: row) {
+    -webkit-box-orient: $direction;
+    -webkit-box-direction: $direction;
+    -webkit-flex-direction: $direction;
+    -ms-flex-direction: $direction;
+    flex-direction: $direction;
+}
+
+@mixin flex-wrap($wrap) {
+    -webkit-flex-wrap: $wrap;
+    -ms-flex-wrap: $wrap;
+    flex-wrap: $wrap;
+}
+
+@mixin align-items($align) {
+    -webkit-box-align: $align;
+    -webkit-align-items: $align;
+    -ms-flex-align: $align;
+    align-items: $align;
+}
+
+@mixin justify-content($justify) {
+    -webkit-box-pack: $justify;
+    -webkit-justify-content: $justify;
+    -ms-flex-pack: $justify;
+    justify-content: $justify;
+}
+
+@mixin align-content($align) {
+    -webkit-align-content: $align;
+    -ms-flex-line-pack: $align;
+    align-content: $align;
+}
+
+@mixin gradient-border() {
+    appearance: none;
+    border: double 2px transparent;
+    border-radius: 4px;
+    background-image: linear-gradient(white, white), linear-gradient(90deg, #D3DAE8 0%, #A7B7D8 100%);
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+}
+
+@mixin tablet {
+    @media (max-width: 1150px) {
+        @content;
+    }
+}
+
+@mixin mobile {
+    @media (max-width: 768px) {
+        @content;
+    }
+}

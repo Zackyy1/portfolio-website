@@ -1,0 +1,32 @@
+@import 'styles/mixins';
+
+
+body,
+html {
+    background: $neu-main;
+    color: black;
+}
+
+* {
+    font-family: 'Sora', sans-serif;
+    font-style: normal;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+ul,
+ol,
+li,
+tr,
+td,
+th,
+table {
+    margin: 0;
+    padding: 0;
+}
