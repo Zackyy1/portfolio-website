@@ -4,7 +4,7 @@
 body,
 html {
     background: $neu-main;
-    color: black;
+    color: $black;
 }
 
 * {
@@ -13,6 +13,7 @@ html {
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    color: $black;
 }
 
 h1,

@@ -159,8 +159,8 @@ const Portfolio = () => {
       <div className="content">
         <Card>
           <div className="scrollable" ref={listWrapperRef}>
-            {Object.keys(projects).map((key) => (
-              <Button key={key} onClick={(e) => setActive(e)}>
+            {Object.keys(projects).map((key, index) => (
+              <Button inset={activeProject === index} key={key} onClick={(e) => setActive(e)}>
                 {key}
               </Button>
             ))}

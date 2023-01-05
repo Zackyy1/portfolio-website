@@ -30,16 +30,10 @@
         height: 100%;
 
         .item {
-            @include rem(font-size, 32);
+            @include rem(font-size, 28);
             @include rem(line-height, 48);
-            @include flex-display();
-            @include flex-direction();
-            align-items: center;
-            justify-items: center;
-            text-align: center;
             cursor: pointer;
-            color: $neu-dark;
-            transition: all 0.2s ease;
+            color: #868686;
             -webkit-tap-highlight-color: transparent;
             -webkit-touch-callout: none;
             -webkit-user-select: none;
@@ -47,47 +41,16 @@
             -moz-user-select: none;
             -ms-user-select: none;
             user-select: none;
+            text-align: center;
+            margin: 16px 0;
+
+            &:hover {
+                color: #777777;
+            }
 
             &.active {
-                color: black;
-                margin: 16px 0;
-                @include rem(font-size, 36);
-
-                .number-label {
-                    color: black;
-
-                    &::before {
-                        border-color: black;
-                        border-width: 2px;
-                    }
-                }
+                color: $black;
             }
-
-            .number-label {
-                position: relative;
-                @include rem(font-size, 32);
-                @include rem(line-height, 48);
-                padding-right: 24px;
-                text-align: center;
-                width: 48px;
-                color: $neu-dark;
-
-                &::before {
-                    position: absolute;
-                    content: '';
-                    border-radius: 100%;
-                    border: 1px solid transparent;
-                    width: 36px;
-                    height: 36px;
-                    top: 8px;
-                    bottom: 0;
-                    left: -8px;
-                    right: 0;
-                }
-            }
-
-
-
         }
     }
 
@@ -101,8 +64,6 @@
         pointer-events: none;
     }
 
-
-
     .section {
         position: absolute;
         display: grid;
@@ -112,85 +73,50 @@
         transform: translate(100%, -50%);
         top: 50%;
 
-        transition: all 0.5s ease;
+        transition: all 0.2s ease;
 
         &.active {
             opacity: 1;
             transform: translate(0, -50%);
+            transition: all 0.2s 0.2s ease;
         }
 
-
-        // height: 100vh;
         align-items: center;
         justify-items: center;
         justify-content: center;
         gap: 48px;
-
-
 
         .image {
             max-height: 300px;
             max-width: 300px;
         }
 
-
-
     }
 }
 
 @include tablet {
 
-    // grid-template-columns: 1fr;
     .landing {
 
         .wrapper {
 
-            padding: 8px 24px;
+            padding: 8px 0px;
             display: flex;
             flex-direction: column;
             min-height: 100vh;
             gap: 24px;
 
             .content-list {
-                // smaller
                 @include rem(font-size, 18);
                 @include rem(line-height, 24);
                 padding-top: 48px;
-                margin-left: -48px;
+                margin: 0 auto;
 
                 .item {
-                    @include rem(font-size, 18);
-                    @include rem(line-height, 24);
-
-                    &.active {
-                        @include rem(font-size, 22);
-                        margin: 12px 0;
-
-                        .number-label {
-                            &::before {
-                                left: 11px;
-                                height: 24px;
-                                width: 24px;
-                                top: 3px;
-                                border-color: black;
-                                border-width: 1px;
-
-                            }
-                        }
-                    }
-
-                    .number-label {
-                        @include rem(font-size, 22);
-                        @include rem(line-height, 26);
-                        padding-right: 0;
-
-                        &::before {
-                            width: 32px;
-                            height: 32px;
-                            top: 3px;
-                            left: -4px;
-                        }
-                    }
+                    @include rem(font-size, 20);
+                    @include rem(line-height, 26);
+                    margin: 6px 0;
+                    padding: 4px 24px;
                 }
             }
 
@@ -204,7 +130,6 @@
 
                 .section {
                     transform: translate(100%, 0);
-                    // position: relative;
 
                     &.active {
                         transform: translate(0, 0);
@@ -221,5 +146,4 @@
 
     }
 
-    // min-height: 100vh;
 }

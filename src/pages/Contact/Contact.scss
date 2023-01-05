@@ -3,6 +3,16 @@
     .content {
         text-align: center;
 
+        button {
+            margin: 16px;
+            position: relative;
+
+            overflow: hidden;
+            border-radius: 12px;
+            padding: 12px;
+
+        }
+
         svg {
             height: 64px;
             width: 64px;

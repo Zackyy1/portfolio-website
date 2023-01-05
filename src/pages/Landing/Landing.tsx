@@ -1,4 +1,4 @@
-import { BodyText, Card, Heading } from "@zackyy1/vun-ui";
+import { BodyText, Button, Card, Heading } from "@zackyy1/vun-ui";
 import Container from "components/Container/Container";
 import React, { useEffect, useRef } from "react";
 import Wine from "assets/wine.svg";
@@ -132,18 +132,34 @@ const Landing = () => {
       <Header />
       <div className="wrapper">
         <div className="content-list" ref={listWrapperRef}>
-          <div className="item active" onClick={(e) => setActive(e)}>
-            <div className="number-label">1</div> Introduction
-          </div>
-          <div className="item" onClick={(e) => setActive(e)}>
-            <div className="number-label">2</div> My skills
-          </div>
-          <div className="item" onClick={(e) => setActive(e)}>
-            <div className="number-label">3</div> Hobbies
-          </div>
-          <div className="item" onClick={(e) => setActive(e)}>
-            <div className="number-label">4</div> Achievements
-          </div>
+          <Button
+            inset={activeSection === 0}
+            className="item active"
+            onClick={(e) => setActive(e)}
+          >
+            Introduction
+          </Button>
+          <Button
+            inset={activeSection === 1}
+            className="item"
+            onClick={(e) => setActive(e)}
+          >
+            My skills
+          </Button>
+          <Button
+            inset={activeSection === 2}
+            className="item"
+            onClick={(e) => setActive(e)}
+          >
+            Hobbies
+          </Button>
+          <Button
+            inset={activeSection === 3}
+            className="item"
+            onClick={(e) => setActive(e)}
+          >
+            Achievements
+          </Button>
         </div>
         <div className="content" ref={contentWrapperRef}>
           <div className="section active main-info">
