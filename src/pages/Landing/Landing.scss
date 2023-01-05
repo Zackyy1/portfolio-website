@@ -1,39 +1,136 @@
 @import 'styles/variables';
+@import 'styles/mixins';
 
 .landing {
 
+    .wrapper {
+        display: grid;
+        grid-template-columns: 33% 1fr;
+        gap: 48px;
+        height: 100%;
+    }
 
-    .arrow-icon {
-        position: absolute;
-        bottom: 0;
-        left: 50%;
-        transform: translateX(-50%);
-        margin-bottom: 32px;
-        font-size: 120px;
+    .bigger {
+        @include rem(font-size, 26);
+        @include rem(line-height, 34);
+        margin-bottom: 0;
+    }
 
-        path {
-            color: #cfcfcf;
+    .smaller {
+        @include rem(font-size, 18);
+        @include rem(line-height, 24);
+        margin-top: 0;
+    }
+
+    .content-list {
+        @include flex-display();
+        @include flex-direction(column);
+        align-self: center;
+        text-align: left;
+        height: 100%;
+
+        .item {
+            @include rem(font-size, 32);
+            @include rem(line-height, 48);
+            @include flex-display();
+            @include flex-direction();
+            align-items: center;
+            justify-items: center;
+            text-align: center;
+            cursor: pointer;
+            color: $neu-dark;
+            transition: all 0.2s ease;
+            -webkit-tap-highlight-color: transparent;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+
+            &.active {
+                color: black;
+                margin: 16px 0;
+                @include rem(font-size, 36);
+
+                .number-label {
+                    color: black;
+
+                    &::before {
+                        border-color: black;
+                        border-width: 2px;
+                    }
+                }
+            }
+
+            .number-label {
+                position: relative;
+                @include rem(font-size, 32);
+                @include rem(line-height, 48);
+                padding-right: 24px;
+                text-align: center;
+                width: 48px;
+                color: $neu-dark;
+
+                &::before {
+                    position: absolute;
+                    content: '';
+                    border-radius: 100%;
+                    border: 1px solid transparent;
+                    width: 36px;
+                    height: 36px;
+                    top: 8px;
+                    bottom: 0;
+                    left: -8px;
+                    right: 0;
+                }
+            }
+
+
+
         }
     }
 
-    .section {
+    .content {
+        align-self: center;
         position: relative;
+        height: 100%;
+        width: 100%;
+        justify-self: center;
+        padding: 24px 0;
+        pointer-events: none;
+    }
+
+
+
+    .section {
+        position: absolute;
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto 1fr;
+        width: 100%;
+        opacity: 0;
+        transform: translate(100%, -50%);
+        top: 50%;
 
-        height: 100vh;
-        align-items: center;
-        justify-items: center;
-        gap: 64px;
+        transition: all 0.5s ease;
 
-
-        .text {
-            text-align: center;
+        &.active {
+            opacity: 1;
+            transform: translate(0, -50%);
         }
 
+
+        // height: 100vh;
+        align-items: center;
+        justify-items: center;
+        justify-content: center;
+        gap: 48px;
+
+
+
         .image {
-            max-height: 400px;
-            max-width: 500px;
+            max-height: 300px;
+            max-width: 300px;
         }
 
 
@@ -41,3 +138,88 @@
     }
 }
 
+@include tablet {
+
+    // grid-template-columns: 1fr;
+    .landing {
+
+        .wrapper {
+
+            padding: 8px 24px;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            gap: 24px;
+
+            .content-list {
+                // smaller
+                @include rem(font-size, 18);
+                @include rem(line-height, 24);
+                padding-top: 48px;
+                margin-left: -48px;
+
+                .item {
+                    @include rem(font-size, 18);
+                    @include rem(line-height, 24);
+
+                    &.active {
+                        @include rem(font-size, 22);
+                        margin: 12px 0;
+
+                        .number-label {
+                            &::before {
+                                left: 11px;
+                                height: 24px;
+                                width: 24px;
+                                top: 3px;
+                                border-color: black;
+                                border-width: 1px;
+
+                            }
+                        }
+                    }
+
+                    .number-label {
+                        @include rem(font-size, 22);
+                        @include rem(line-height, 26);
+                        padding-right: 0;
+
+                        &::before {
+                            width: 32px;
+                            height: 32px;
+                            top: 3px;
+                            left: -4px;
+                        }
+                    }
+                }
+            }
+
+            .content {
+
+                display: block;
+                position: relative;
+                width: 100%;
+                height: 100%;
+                padding: 0;
+
+                .section {
+                    transform: translate(100%, 0);
+                    // position: relative;
+
+                    &.active {
+                        transform: translate(0, 0);
+                    }
+
+                    .image {
+                        display: none;
+                        max-width: 100px;
+                        max-height: 100px;
+                    }
+                }
+            }
+        }
+
+    }
+
+    // min-height: 100vh;
+}

@@ -1,0 +1,12 @@
+@import 'styles/mixins';
+.contact {
+    .content {
+        text-align: center;
+
+        svg {
+            height: 64px;
+            width: 64px;
+            margin: 12px 12px;
+        }
+    }
+}

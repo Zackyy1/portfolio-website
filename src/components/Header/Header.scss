@@ -1,0 +1,31 @@
+@import 'styles/mixins';
+
+header {
+    @include flex-display();
+    @include flex-direction(row);
+    justify-content: center;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+
+    margin: 12px 0 0;
+
+    a {
+        text-decoration: none;
+        @include rem(font-size, 18);
+        @include rem(line-height, 36);
+        text-transform: uppercase;
+        letter-spacing: 0.1rem;
+        transition: all 0.3s ease-in-out;
+        margin: 0 12px;
+
+    }
+}
+
+@include tablet {
+    header {
+        margin-top: 8px;
+    }
+}
