@@ -11,6 +11,7 @@ import relivico from "assets/relivico.png";
 import wana from "assets/wana.png";
 import maze from "assets/maze.png";
 import spyfall from "assets/spyfall.png";
+import neu from "assets/neu.png";
 
 const projects = {
   "Spirit Gaming": {
@@ -59,6 +60,15 @@ const projects = {
     image: spyfall,
     link: null,
   },
+  "Vun UI": {
+    name: "Vun UI",
+    status: "Live / In Development",
+    description:
+      "A React component library to quickly compose apps and websites in a similar style using Neumorphic design. It's the one you're enjoying right now.",
+    technologies: ["React", "Scss", "Storybook (TBD)", "npm package"],
+    image: neu,
+    link: "https://vun-ui.web.app/",
+  },
   Minesweeper: {
     name: "Minesweeper",
     status: "Passive",
@@ -80,7 +90,7 @@ const projects = {
     name: "Issue Tracker",
     status: "Passive",
     description:
-      'A functional portfolio website that would display various projects and their "growth" over time. Not used, as I decided to go with a different approach.',
+      "Simple To-Do list application with authentication, so you can try it out yourself. Merely a proof of concept, as I was learning Angular and Firebase.",
     technologies: ["Angular", "Firebase", "Firebase Authentication"],
     image: tracker,
     link: "https://issue-tracker-94746.firebaseapp.com/projects/all",
@@ -98,7 +108,7 @@ const projects = {
     name: "Maze",
     status: "Inactive",
     description:
-      "A programming challenge by an employer from a long time ago. Fun and interesting project",
+      "A test task from a long time ago. Fun and interesting project. Utilizes a recursive backtracking algorithm to navigate a maze, as well as multiple ways to solve it.",
     technologies: ["jQuery", "APIs", "Express"],
     image: maze,
     link: null,
@@ -160,7 +170,11 @@ const Portfolio = () => {
         <Card>
           <div className="scrollable" ref={listWrapperRef}>
             {Object.keys(projects).map((key, index) => (
-              <Button inset={activeProject === index} key={key} onClick={(e) => setActive(e)}>
+              <Button
+                inset={activeProject === index}
+                key={key}
+                onClick={(e) => setActive(e)}
+              >
                 {key}
               </Button>
             ))}

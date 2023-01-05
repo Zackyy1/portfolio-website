@@ -6,8 +6,6 @@ import Cat from "assets/cat.svg";
 import Avatar from "assets/avatar.svg";
 import Showcase from "assets/showcase.svg";
 import "./Landing.scss";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowDown } from "@fortawesome/free-solid-svg-icons";
 import Header from "components/Header/Header";
 
 const Landing = () => {
@@ -28,7 +26,6 @@ const Landing = () => {
       );
     }
 
-    console.log(listRefs);
   }, []);
 
   const setActive = (event) => {
@@ -84,7 +81,6 @@ const Landing = () => {
         scrollCount = 0;
       }
 
-      // console.log(scrollCount);
     };
 
     let swipeDirection = 0;

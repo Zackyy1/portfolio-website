@@ -8,7 +8,6 @@
         height: 100%;
         @include flex-display();
         @include flex-direction(row);
-        // margin-top: -200px;
 
         .preview {
             width: 100%;
