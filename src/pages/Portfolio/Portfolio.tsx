@@ -132,8 +132,6 @@ const Portfolio = () => {
         contentWrapperRef.current.querySelectorAll(".section")
       );
     }
-
-    console.log(listRefs);
   }, []);
 
   const setActive = (event) => {
