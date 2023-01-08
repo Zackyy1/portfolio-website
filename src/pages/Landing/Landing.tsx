@@ -8,6 +8,8 @@ import Showcase from "assets/showcase.svg";
 import "./Landing.scss";
 import Header from "components/Header/Header";
 
+const switchOnSwipe = false;
+
 const Landing = () => {
   const [activeSection, setActiveSection] = React.useState(0);
 
@@ -25,7 +27,6 @@ const Landing = () => {
         contentWrapperRef.current.querySelectorAll(".section")
       );
     }
-
   }, []);
 
   const setActive = (event) => {
@@ -80,7 +81,6 @@ const Landing = () => {
       } else if (scrollCount < 0 && activeSection === 0) {
         scrollCount = 0;
       }
-
     };
 
     let swipeDirection = 0;
@@ -110,15 +110,19 @@ const Landing = () => {
       swipeEnd = null;
     };
 
-    document.addEventListener("touchstart", handleTouchStart);
-    document.addEventListener("touchmove", handleTouchMove);
-    document.addEventListener("touchend", handleTouchEnd);
+    if (switchOnSwipe) {
+      document.addEventListener("touchstart", handleTouchStart);
+      document.addEventListener("touchmove", handleTouchMove);
+      document.addEventListener("touchend", handleTouchEnd);
+    }
     document.addEventListener("wheel", handleScroll);
 
     return () => {
-      document.removeEventListener("touchstart", handleTouchStart);
-      document.removeEventListener("touchmove", handleTouchMove);
-      document.removeEventListener("touchend", handleTouchEnd);
+      if (switchOnSwipe) {
+        document.removeEventListener("touchstart", handleTouchStart);
+        document.removeEventListener("touchmove", handleTouchMove);
+        document.removeEventListener("touchend", handleTouchEnd);
+      }
       document.removeEventListener("wheel", handleScroll);
     };
   }, [activeSection]);
@@ -189,7 +193,7 @@ const Landing = () => {
                 As for technologies, I'm familiar with
               </BodyText>
               <BodyText>
-                React, NextJS, jQuery, Angular, Vue, TailwindCSS, Less/Sass and{" "}
+                React, NextJS, Firebase, jQuery, Angular, Vue, TailwindCSS, Less/Sass and{" "}
                 <abbr title="Adobe Experience Manager">AEM</abbr> (just to name
                 a few).
               </BodyText>

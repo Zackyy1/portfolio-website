@@ -25,6 +25,19 @@ const router = createBrowserRouter([
     errorElement: <div>404</div>,
   },
 ]);
+console.log(
+  "%cYou naughty, \nLooking for something?\nWell, feel free, you can also find source code here: ",
+  "color: red; font-size: 30px; font-weight: bold; text-shadow: 0 0 10px red;"
+);
+console.log(
+  "%chttps://github.com/Zackyy1/portfolio-website",
+  "font-size: 20px; text-shadow: 0 0 10px red;"
+);
+console.log(
+  "%cBut thanks for taking interest anyway!\n\n- Martin",
+  "color: red; font-size: 30px; font-weight: bold; text-shadow: 0 0 10px red;"
+);
+
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );

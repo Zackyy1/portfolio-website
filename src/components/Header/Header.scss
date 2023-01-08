@@ -11,6 +11,7 @@ header {
     transform: translateX(-50%);
 
     margin: 12px 0 0;
+    max-width: 450px;
 
     a {
         text-decoration: none;
@@ -20,7 +21,12 @@ header {
         letter-spacing: 0.1rem;
         transition: all 0.3s ease-in-out;
         margin: 0 12px;
+        width: 33%;
+        text-align: center;
+    }
 
+    @include mobile {
+        
     }
 }
 
