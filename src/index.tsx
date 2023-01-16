@@ -1,12 +1,13 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import "@zackyy1/vun-ui/dist/cjs/index.css";
 import "./index.css";
 import "./styles/_general.scss";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Landing from "./pages/Landing/Landing";
-import Portfolio from "pages/Portfolio/Portfolio";
-import Contact from "pages/Contact/Contact";
+
+const Portfolio = lazy(() => import("pages/Portfolio/Portfolio"));
+const Landing = lazy(() => import("./pages/Landing/Landing"));
+const Contact = lazy(() => import("pages/Contact/Contact"));
 
 const router = createBrowserRouter([
   {
@@ -43,6 +44,8 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <Suspense fallback={null}>
+      <RouterProvider router={router} />
+    </Suspense>
   </React.StrictMode>
 );

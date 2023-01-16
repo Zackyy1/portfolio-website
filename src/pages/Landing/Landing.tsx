@@ -1,12 +1,13 @@
+import React, { useEffect, useRef, lazy, Suspense } from "react";
 import { BodyText, Button, Card, Heading } from "@zackyy1/vun-ui";
-import Container from "components/Container/Container";
-import React, { useEffect, useRef } from "react";
+import "./Landing.scss";
 import Wine from "assets/wine.svg";
 import Cat from "assets/cat.svg";
 import Avatar from "assets/avatar.svg";
 import Showcase from "assets/showcase.svg";
-import "./Landing.scss";
-import Header from "components/Header/Header";
+
+const Header = lazy(() => import("components/Header/Header"));
+const Container = lazy(() => import("components/Container/Container"));
 
 const switchOnSwipe = false;
 
@@ -128,118 +129,122 @@ const Landing = () => {
   }, [activeSection]);
 
   return (
-    <Container className="landing">
-      <Header />
-      <div className="wrapper">
-        <div className="content-list" ref={listWrapperRef}>
-          <Button
-            inset={activeSection === 0}
-            className="item active"
-            onClick={(e) => setActive(e)}
-          >
-            Introduction
-          </Button>
-          <Button
-            inset={activeSection === 1}
-            className="item"
-            onClick={(e) => setActive(e)}
-          >
-            My skills
-          </Button>
-          <Button
-            inset={activeSection === 2}
-            className="item"
-            onClick={(e) => setActive(e)}
-          >
-            Hobbies
-          </Button>
-          <Button
-            inset={activeSection === 3}
-            className="item"
-            onClick={(e) => setActive(e)}
-          >
-            Achievements
-          </Button>
-        </div>
-        <div className="content" ref={contentWrapperRef}>
-          <div className="section active main-info">
-            <img className="image" src={Avatar} />
-            <Card>
-              <Heading tag="h1">Hi there!</Heading>
-              <BodyText className="bigger">
-                I'm Martin,
-                <br /> a Software Engineer who specializes in front-end
-                development.
-              </BodyText>
-              <BodyText>
-                That means I'm the one who makes sure your website looks as
-                amazing as it operates. Just call me the code wizard of the
-                internet. Or the web guru. Or the front-end fairy. I'm flexible.
-              </BodyText>
-            </Card>
+    <Suspense fallback={null}>
+      <Container className="landing">
+        <Header />
+        <div className="wrapper">
+          <div className="content-list" ref={listWrapperRef}>
+            <Button
+              inset={activeSection === 0}
+              className="item active"
+              onClick={(e) => setActive(e)}
+            >
+              Introduction
+            </Button>
+            <Button
+              inset={activeSection === 1}
+              className="item"
+              onClick={(e) => setActive(e)}
+            >
+              My skills
+            </Button>
+            <Button
+              inset={activeSection === 2}
+              className="item"
+              onClick={(e) => setActive(e)}
+            >
+              Hobbies
+            </Button>
+            <Button
+              inset={activeSection === 3}
+              className="item"
+              onClick={(e) => setActive(e)}
+            >
+              Achievements
+            </Button>
           </div>
-          <div className="section skills">
-            <img className="image" src={Showcase} />
-            <Card>
-              <Heading tag="h4">
-                I'm a programming pro with a long list of skills and
-                technologies under my belt.{" "}
-              </Heading>
-              <BodyText>
-                Some of the languages I know include JS/TS, Python, Java, C#,
-                and even a little bit of Lua.
-              </BodyText>
-              <BodyText className={"bigger"}>
-                As for technologies, I'm familiar with
-              </BodyText>
-              <BodyText>
-                React, NextJS, Firebase, jQuery, Angular, Vue, TailwindCSS, Less/Sass and{" "}
-                <abbr title="Adobe Experience Manager">AEM</abbr> (just to name
-                a few).
-              </BodyText>
-              <BodyText>
-                As well as APIs, databases, data structures, accessibility, and
-                even UX/UI design.
-              </BodyText>
-            </Card>
-          </div>
-          <div className="section hobbies">
-            <img className="image " src={Wine} />
+          <div className="content" ref={contentWrapperRef}>
+            <div className="section active main-info">
+              <img className="image" src={Avatar} />
+              <Card>
+                <Heading tag="h1">Hi there!</Heading>
+                <BodyText className="bigger">
+                  I'm Martin,
+                  <br /> a Software Engineer who specializes in front-end
+                  development.
+                </BodyText>
+                <BodyText>
+                  That means I'm the one who makes sure your website looks as
+                  amazing as it operates. Just call me the code wizard of the
+                  internet. Or the web guru. Or the front-end fairy. I'm
+                  flexible.
+                </BodyText>
+              </Card>
+            </div>
+            <div className="section skills">
+              <img className="image" src={Showcase} />
+              <Card>
+                <Heading tag="h4">
+                  I'm a programming pro with a long list of skills and
+                  technologies under my belt.{" "}
+                </Heading>
+                <BodyText>
+                  Some of the languages I know include JS/TS, Python, Java, C#,
+                  and even a little bit of Lua.
+                </BodyText>
+                <BodyText className={"bigger"}>
+                  As for technologies, I'm familiar with
+                </BodyText>
+                <BodyText>
+                  React, NextJS, Firebase, jQuery, Angular, Vue, TailwindCSS,
+                  Less/Sass and{" "}
+                  <abbr title="Adobe Experience Manager">AEM</abbr> (just to
+                  name a few).
+                </BodyText>
+                <BodyText>
+                  As well as APIs, databases, data structures, accessibility,
+                  and even UX/UI design.
+                </BodyText>
+              </Card>
+            </div>
+            <div className="section hobbies">
+              <img className="image " src={Wine} />
 
-            <Card>
-              <Heading tag="h2">Let's talk hobbies.</Heading>
-              <BodyText className={"bigger"}>Pick your favorite.</BodyText>
-              <BodyText>
-                When I'm not busy dominating the coding world, you can find me
-                tearing up the roads on my motorcycle, shredding on my guitar
-                like a rockstar, or getting lost in a virtual reality game.
-              </BodyText>
-              <BodyText>
-                But if you really want to win me over, just bring on the red
-                wine. And maybe a pool table. Or a snooker table. I'm not picky,
-                as long as there are balls involved.
-              </BodyText>
-            </Card>
-          </div>
-          <div className="section serious">
-            <img className="image " src={Cat} />
-            <Card>
-              <Heading tag="h2">Let's talk business now.</Heading>
-              <BodyText className={"bigger"}>My biggest project is</BodyText>
-              <BodyText className="smaller">
-                <a target={"_blank"} href="https://spirit-gaming.com">
-                  Spirit Gaming
-                </a>
-              </BodyText>
-              <BodyText className={"bigger"}>I have a bald cat.</BodyText>
-              <BodyText className="smaller">His name is Felix</BodyText>
-              <BodyText className={"bigger"}>Favorite food</BodyText>
-              <BodyText className="smaller">Italian, obviously</BodyText>
-            </Card>
+              <Card>
+                <Heading tag="h2">Let's talk hobbies.</Heading>
+                <BodyText className={"bigger"}>Pick your favorite.</BodyText>
+                <BodyText>
+                  When I'm not busy dominating the coding world, you can find me
+                  tearing up the roads on my motorcycle, shredding on my guitar
+                  like a rockstar, or getting lost in a virtual reality game.
+                </BodyText>
+                <BodyText>
+                  But if you really want to win me over, just bring on the red
+                  wine. And maybe a pool table. Or a snooker table. I'm not
+                  picky, as long as there are balls involved.
+                </BodyText>
+              </Card>
+            </div>
+            <div className="section serious">
+              <img className="image " src={Cat} />
+              <Card>
+                <Heading tag="h2">Let's talk business now.</Heading>
+                <BodyText className={"bigger"}>My biggest project is</BodyText>
+                <BodyText className="smaller">
+                  <a target={"_blank"} href="https://spirit-gaming.com">
+                    Spirit Gaming
+                  </a>
+                </BodyText>
+                <BodyText className={"bigger"}>I have a bald cat.</BodyText>
+                <BodyText className="smaller">His name is Felix</BodyText>
+                <BodyText className={"bigger"}>Favorite food</BodyText>
+                <BodyText className="smaller">Italian, obviously</BodyText>
+              </Card>
+            </div>
           </div>
         </div>
-      </div>
-    </Container>
+      </Container>
+    </Suspense>
   );
 };
 

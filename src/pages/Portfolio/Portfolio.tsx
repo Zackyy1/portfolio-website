@@ -1,7 +1,5 @@
+import React, { useEffect, useRef, lazy, Suspense } from "react";
 import { BodyText, Button, Card, Heading } from "@zackyy1/vun-ui";
-import Container from "components/Container/Container";
-import Header from "components/Header/Header";
-import React, { useEffect, useRef } from "react";
 import "./Portfolio.scss";
 import SpiritGaming from "assets/spiritgaming.png";
 import minesweeper from "assets/minesweeper.png";
@@ -12,6 +10,10 @@ import wana from "assets/wana.png";
 import maze from "assets/maze.png";
 import spyfall from "assets/spyfall.png";
 import neu from "assets/neu.png";
+import holotag from "assets/holotag.png";
+
+const Header = lazy(() => import("components/Header/Header"));
+const Container = lazy(() => import("components/Container/Container"));
 
 const projects = {
   "Spirit Gaming": {
@@ -50,6 +52,15 @@ const projects = {
     ],
     image: relivico,
     link: "https://relivi.co",
+  },
+  HoloTag: {
+    name: "HoloTag",
+    status: "In Development",
+    description:
+      "NFC cards, key tags, visit cards, stickers that lead to your personalized page. Easily share your social media in person and online. Present yourself in person and online - with class. Setup your profile picture, social media links for fast access, custom links, customize your page appearance and see how many visits it gets.",
+    technologies: ["NextJS", "TBD"],
+    image: holotag,
+    link: "https://holotag.cc/",
   },
   Spyfall: {
     name: "Spyfall",
@@ -162,53 +173,55 @@ const Portfolio = () => {
   }, [activeProject]);
 
   return (
-    <Container className="portfolio">
-      <Header />
-      <div className="content">
-        <Card>
-          <div className="scrollable" ref={listWrapperRef}>
-            {Object.keys(projects).map((key, index) => (
-              <Button
-                inset={activeProject === index}
-                key={key}
-                onClick={(e) => setActive(e)}
-              >
-                {key}
-              </Button>
+    <Suspense fallback={null}>
+      <Container className="portfolio">
+        <Header />
+        <div className="content">
+          <Card>
+            <div className="scrollable" ref={listWrapperRef}>
+              {Object.keys(projects).map((key, index) => (
+                <Button
+                  inset={activeProject === index}
+                  key={key}
+                  onClick={(e) => setActive(e)}
+                >
+                  {key}
+                </Button>
+              ))}
+            </div>
+          </Card>
+          <div className="preview" ref={contentWrapperRef}>
+            {Object.keys(projects).map((key) => (
+              <div key={key} className="section">
+                <div className="image">
+                  <img src={projects[key].image} alt={projects[key].name} />
+                </div>
+                <div className="info">
+                  <Heading tag="h2">{projects[key].name}</Heading>
+                  <Heading tag="h4">Status: {projects[key].status}</Heading>
+                  <BodyText>{projects[key].description}</BodyText>
+                  <div className="technologies">
+                    <Heading tag="h4">Technologies used</Heading>
+                    <BodyText>{projects[key].technologies.join(", ")}</BodyText>
+                  </div>
+                  {projects[key].link && (
+                    <Heading tag="h4">
+                      <a
+                        href={projects[key].link}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        View Project
+                      </a>
+                    </Heading>
+                  )}
+                </div>
+              </div>
             ))}
           </div>
-        </Card>
-        <div className="preview" ref={contentWrapperRef}>
-          {Object.keys(projects).map((key) => (
-            <div key={key} className="section">
-              <div className="image">
-                <img src={projects[key].image} alt={projects[key].name} />
-              </div>
-              <div className="info">
-                <Heading tag="h2">{projects[key].name}</Heading>
-                <Heading tag="h4">Status: {projects[key].status}</Heading>
-                <BodyText>{projects[key].description}</BodyText>
-                <div className="technologies">
-                  <Heading tag="h4">Technologies used</Heading>
-                  <BodyText>{projects[key].technologies.join(", ")}</BodyText>
-                </div>
-                {projects[key].link && (
-                  <Heading tag="h4">
-                    <a
-                      href={projects[key].link}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      View Project
-                    </a>
-                  </Heading>
-                )}
-              </div>
-            </div>
-          ))}
         </div>
-      </div>
-    </Container>
+      </Container>
+    </Suspense>
   );
 };
 
